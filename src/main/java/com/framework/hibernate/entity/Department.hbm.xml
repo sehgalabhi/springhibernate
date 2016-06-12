@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping package="com.framework.hibernate.entity">
+
+	<class name="Department" table="DEPARTMENTS">
+		<id name="id" column="DEPARTMENT_ID">
+			<generator class="increment"></generator>
+		</id>
+		<property name="departmentName" column="DEPARTMENT_NAME"></property>
+		<property  name="managerID" column="MANAGER_ID"></property>
+		<property name="locationID" column="LOCATION_ID"></property>
+	</class>
+
+</hibernate-mapping>

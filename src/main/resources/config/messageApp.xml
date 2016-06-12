@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+	 http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="messageApp" class="com.framework.BasicAndJDBCAppImpl">
+		<constructor-arg name="name" value="Ayaansh"></constructor-arg>
+		<property name="text" value="How are you"></property>
+		<property name="what" ref="stringMessage"></property>
+		<property name="dataSource" ref="mydataSource"></property>
+	</bean>
+
+	<!-- <bean id="hibernateApp" class="com.framework.HibernateApp">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean> -->
+
+	<bean id="stringMessage" class="java.lang.String">
+		<constructor-arg value="What doing"></constructor-arg>
+	</bean>
+
+
+	<bean id="mydataSource" class="org.apache.commons.dbcp2.BasicDataSource"
+		destroy-method="close">
+		<property name="driverClassName" value="oracle.jdbc.OracleDriver" />
+		<property name="url" value="jdbc:oracle:thin:@localhost:1521/XE" />
+		<property name="username" value="HR" />
+		<property name="password" value="HR" />
+	</bean>
+
+	<!-- <bean id="sessionFactory"
+		class="org.springframework.orm.hibernate5.LocalSessionFactoryBean">
+		<property name="datasource" ref="mydataSource"></property>
+		
+		<property name="hibernateProperties">
+			<value>
+				hibernate.dialect=org.hibernate.dialect.HSQLDialect
+			</value>
+		</property>
+
+
+	</bean> -->
+
+</beans>

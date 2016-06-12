@@ -1,0 +1,8 @@
+com/framework/SpringTest.class
+com/framework/junit/CalcluatorTest1.class
+com/framework/hibernate/entity/HibernateBasicTest.class
+com/framework/hibernate/entity/HibernateSpringTest.class
+com/framework/junit/JunitTestMethodOrder.class
+com/framework/junit/JunitRunWithExample.class
+com/framework/junit/PracticeTest.class
+com/framework/junit/JunitRunner.class
