@@ -3,17 +3,11 @@ package com.framework.hibernate;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.hibernate.Transaction;
 import org.hibernate.cfg.Configuration;
-import org.hibernate.criterion.Example;
-import org.hibernate.criterion.Order;
-import org.hibernate.criterion.Projection;
-import org.hibernate.criterion.Projections;
-import org.hibernate.criterion.Restrictions;
 import org.hibernate.service.ServiceRegistryBuilder;
 
 import com.framework.hibernate.entity.FourWheeler;
@@ -26,7 +20,7 @@ import com.framework.hibernate.entity.Vehicle;
  * @author abhi
  *
  */
-public class HibernateApp {
+public class HibernateAppHQL {
 
 	/**
 	 * 
@@ -54,19 +48,28 @@ public class HibernateApp {
 
 		session.save(twoWheele);
 		session.save(fourWheele);
+		// vehicle.setVehicleName("UpdateD Car");
+	
+		Query query = session.createQuery("from Vehicle where vehicleid = :vehicleid"  );
+		query.setInteger("vehicleid", 1);
 	
 	
-		Criteria criteria = session.createCriteria(Vehicle.class);
-			criteria.addOrder(Order.desc("vehicleId"));
 		
-			Example example = Example.create(vehicle);
-			
-			
-		///	System.out.println(criteria);
-		List<Vehicle> vehicles = criteria.list();
+		List<Vehicle> vehicles = query.list();
+		vehicles.stream().forEach(System.out::println);
+		Query query2 = session.getNamedQuery("Vehicle.byID");
+		query2.setInteger(0, 2);
+		vehicles = query2.list();
+		
+		
 		
 		vehicles.stream().forEach(System.out::println);
-			
+
+		
+		Query query3 = session.getNamedQuery("Vehicle.byName");
+		query3.setInteger(0, 3);
+		vehicles = query3.list();
+		vehicles.stream().forEach(System.out::println);
 		tx.commit();
 		session.close();
 

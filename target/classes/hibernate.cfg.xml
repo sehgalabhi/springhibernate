@@ -5,19 +5,21 @@
 <hibernate-configuration>
 	<session-factory>
 
-		<property name="connection.driver_class">oracle.jdbc.OracleDriver</property>
-		<property name="connection.url">jdbc:oracle:thin:@localhost:1521/XE</property>
-		<property name="connection.username">HR</property>
-		<property name="connection.password">HR</property>
+		<property name="connection.driver_class">org.postgresql.Driver</property>
+		<property name="connection.url">jdbc:postgresql://localhost:5432/test</property>
+		<property name="connection.username">hr</property>
+		<property name="connection.password">hr</property>
 		<property name="connection.pool_size">1</property>
 
 		<property name="show_sql">true</property>
-		<property name="dialect">org.hibernate.dialect.OracleDialect</property>
+		<property name="dialect">org.hibernate.dialect.PostgreSQLDialect</property>
 		<property name="format_sql">true</property>
-		<property name="hbm2ddl">true</property>
-		
-		<mapping resource="com/framework/hibernate/entity/Department.hbm.xml"/>
-		
+		<property name="hbm2ddl.auto">create</property>
+
+		<mapping class="com.framework.hibernate.entity.UserDetails" />
+		<mapping class="com.framework.hibernate.entity.Vehicle" />
+		<mapping class="com.framework.hibernate.entity.TwoWheeler" />
+		<mapping class="com.framework.hibernate.entity.FourWheeler" />
 	</session-factory>
 
 </hibernate-configuration>
